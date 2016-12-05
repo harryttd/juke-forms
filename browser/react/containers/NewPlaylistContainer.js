@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import NewPlaylist from '../NewPlaylist'
+import NewPlaylist from '../components/NewPlaylist'
 
 export default class NewPlaylistContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
       name: ''
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event){
     this.setState({
@@ -17,13 +18,15 @@ export default class NewPlaylistContainer extends Component {
 
   handleSubmit(event){
     event.preventDefault();
+    this.setState({
+      name: ''
+    })
   }
 
   render(){
-      console.log(this.state.name)
     return (
        <div>
-          <NewPlaylist value={this.state.name} onSubmit={this.handleSubmit} onChange={this.handleChange} />
+          <NewPlaylist value={this.state.name} handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
        </div>
     )
   }
