@@ -132,7 +132,7 @@ export default class AppContainer extends Component {
       selectAlbum: this.selectAlbum,
       selectArtist: this.selectArtist
     });
-    console.log(this);
+
     return (
       <div id="main" className="container-fluid">
         <div className="col-xs-2">
