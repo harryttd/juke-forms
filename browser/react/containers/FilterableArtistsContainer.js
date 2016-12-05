@@ -16,31 +16,16 @@ export default class FilterableArtistsContainer extends Component {
     this.setState({input: event.target.value});
   }
 
-  filterArtists() {
-    return axios.get('/api/artists/')
-    .then(artists => {
-      return artists.data.map(artist => {
-        return artist;
-      });
-    });
-  }
-
   // <Artists artists={filteredArtists} />
 
   render() {
     const input = this.state.input;
-    const filteredArtists = this.filterArtists();
-
-    const x = filteredArtists
-      .then(artists => {
-        return artists.filter(artist => artist.name.match(input));
-      });
-    console.log(x);
+    const filteredArtists = this.props.artists.filter(artist =>   artist.name.match(input));
 
     return (
       <div>
         <FilterInput value={input} handleChange={this.handleChange}/>
-        <Artists artists={x} />
+        <Artists artists={filteredArtists} />
       </div>
     );
   }
